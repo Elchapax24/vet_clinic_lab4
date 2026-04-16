@@ -1,0 +1,24 @@
+<h1>Pet Details</h1>
+
+<p><strong>Name:</strong> <%= @pet.name %></p>
+<p><strong>Species:</strong> <%= @pet.species %></p>
+<p><strong>Breed:</strong> <%= @pet.breed %></p>
+<p><strong>Date of Birth:</strong> <%= @pet.date_of_birth %></p>
+<p><strong>Weight:</strong> <%= @pet.weight %></p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= link_to "#{@pet.owner.first_name} #{@pet.owner.last_name}", owner_path(@pet.owner) %>
+</p>
+
+<h2>Appointments</h2>
+
+<ul>
+  <% @pet.appointments.each do |appointment| %>
+    <li>
+      <%= link_to appointment.date, appointment_path(appointment) %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Back to Pets", pets_path %>
